@@ -1,0 +1,60 @@
+#login-box,
+#register-box {
+  width: 340px;
+  position: relative;
+  margin: 10% auto 0px -145px;
+  left: 50%;
+}
+#login-box .body,
+#register-box .body {
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
+}
+#login-box .body #login-box,
+#register-box .body #login-box,
+#login-box .body #register-box,
+#register-box .body #register-box {
+  position: relative;
+  top: 0px;
+  margin-top: 20px;
+}
+#login-box .form-box .footer,
+#register-box .form-box .footer,
+#login-box .form-box .header,
+#register-box .form-box .header {
+  border-radius: 0 !important;
+  width: auto !important;
+}
+#login-box .form-box .text,
+#register-box .form-box .text {
+  text-align: center;
+}
+#login-box .form-box .footer,
+#register-box .form-box .footer {
+  border-top: 1px solid #2587af;
+  text-align: center;
+  box-shadow: none;
+}
+#login-box .form-box .footer a:hover,
+#register-box .form-box .footer a:hover,
+#login-box .form-box .footer a,
+#register-box .form-box .footer a {
+  color: #326eaf;
+}
+#login-box .form-box .blocker,
+#register-box .form-box .blocker {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 0;
+}
+.error {
+  padding: 6px;
+  margin-left: 12px;
+  margin-right: 12px;
+  text-align: center;
+}

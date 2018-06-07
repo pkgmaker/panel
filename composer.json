@@ -1,0 +1,8 @@
+{
+    "name": "test/white",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "firebase/php-jwt": "^5.0"
+    }
+}

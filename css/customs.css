@@ -1,0 +1,75 @@
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+.ajax-loader {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto; /* presto! */
+    opacity: 1;
+    z-index: 10000;
+}
+
+.dataTables_length {
+    float: left;
+}
+
+#contenidos_filter {
+    float: right;
+}
+
+.dropzone-upload {
+    text-align: center;
+    padding: 10px 10px;
+    border: 1px dashed rgb(61, 143, 191);
+}
+
+.dz-message > img {
+    width: 7em;
+}
+
+.dz-message h3 {
+    display: block;
+}
+
+.mt-1em {
+    margin-top: 1em;
+}
+
+#sinopsis {
+    resize: none;
+}
+
+.chosen-results {
+    max-height: 145px !important;
+}
+
+.mt-3em {
+    margin-top: 3em;
+}
+
+.mr-1em {
+    margin-right: 1em !important;
+}
+
+.img-upload {
+    width: 48px;
+    height: 36px;
+}
+
+textarea {
+    resize: none;
+}

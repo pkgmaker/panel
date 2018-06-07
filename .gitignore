@@ -1,0 +1,12 @@
+.idea/
+phpadm/
+posters/*
+!subtitulos/index.html
+subtitulos/*
+!posters/index.html
+tmp
+system/tmp
+config/config.php
+vendor/
+composer.phar
+.vscode/
