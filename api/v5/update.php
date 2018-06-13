@@ -18,7 +18,7 @@ else {
         'appid: ' . $appid
     ];
 
-    $server = config::$mainPage . "/api/v4/update.php";
+    $server = config::$mainPage . "/api/v5/update.php";
     $ch = curl_init($server);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

@@ -8,19 +8,19 @@ $db = new PDOConnection();
 $action = $request->post('action')->getString();
 switch ($action) {
     case 'add-section':
-        $seccion = $request->post('name')->getString();
-        $count = $db->select('cat_tipo_contenido', "tipo_contenido='$seccion'");
+        $section = $request->post('name')->getString();
+        $count = $db->select('content_type', "content_type='$section'");
 
         if ($count > 0)
             $msg = ["error" => true, "msg" => "That element exist."];
         else {
-            $db->insert('cat_tipo_contenido', ['tipo_contenido' => $seccion, 'api' => 'video', 'pin' => '0']);
+            $db->insert('content_type', ['content_type' => $section, 'api' => 'video', 'pin' => '0']);
             $msg = ["error" => false, "msg" => "Added"];
         }
         break;
     case 'rm-section':
         $id = $request->post('id')->getString();
-        $count = $db->delete('cat_tipo_contenido', "id='$id'");
+        $count = $db->delete('content_type', "id='$id'");
 
         if ($count > 0)
             $msg = ["error" => false, "msg" => "Removed"];
@@ -29,20 +29,20 @@ switch ($action) {
 
         break;
     case 'add-category':
-        $seccion = $request->post('section')->getString();
+        $section = $request->post('section')->getString();
         $category = $request->post('name')->getString();
-        $count = $db->select('cat_categorias', "id_cat_tipo_contenido='$seccion' and categoria='$category'");
+        $count = $db->select('categories', "id_content_type='$section' and category='$category'");
 
         if ($count > 0)
             $msg = ["error" => true, "msg" => "That element exist."];
         else {
-            $db->insert('cat_categorias', ['id_cat_tipo_contenido' => $seccion, 'categoria' => $category]);
+            $db->insert('categories', ['id_content_type' => $section, 'category' => $category]);
             $msg = ["error" => false, "msg" => "Added"];
         }
         break;
     case 'rm-category':
         $id = $request->post('id')->getString();
-        $count = $db->delete('cat_categorias', "id='$id'");
+        $count = $db->delete('categories', "id='$id'");
 
         if ($count > 0)
             $msg = ["error" => false, "msg" => "Removed"];
@@ -52,7 +52,7 @@ switch ($action) {
         break;
     case 'get-category':
         $id = $request->post('section')->getString();
-        $count = $db->select('cat_categorias', "id_cat_tipo_contenido='$id'");
+        $count = $db->select('categories', "id_content_type='$id'");
 
         if ($count > 0) {
             $data = $db->getResults();

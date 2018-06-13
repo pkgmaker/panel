@@ -30,7 +30,7 @@ var loadCategories = function () {
             success: function (data) {
                 if (data.error)
                     notification({
-                        title: 'Seccion',
+                        title: 'Section',
                         error: data.error,
                         msg: data.msg
                     });
@@ -38,8 +38,8 @@ var loadCategories = function () {
                     $('#choose-category').empty();
                     $.when($.each(data.values, function (key, category) {
                         $('#choose-category').append($('<option></option>')
-                            .attr('value', category.cve)
-                            .text(category.categoria));
+                            .attr('value', category.id)
+                            .text(category.category));
                     })).done(function () {
                         $('#choose-category').trigger("chosen:updated");
                     });

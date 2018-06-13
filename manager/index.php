@@ -33,7 +33,7 @@ if ($request->existGet('exit'))
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 <body class="skin-dark">
 <div class="wrapper">
@@ -52,13 +52,13 @@ if ($request->existGet('exit'))
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <i class="glyphicon glyphicon-user"></i><span><?php echo $_SESSION['usuario']; ?></span>
+                            <i class="glyphicon glyphicon-user"></i><span><?php echo $_SESSION['username']; ?></span>
                             <i class="caret"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="user-header bg-dark">
                                 <img class="img-circle" alt="User Image" src="avatars/avatar.png">
-                                <p style="margin-top: 0px"><?php echo $_SESSION['usuario']; ?>
+                                <p style="margin-top: 0"><?php echo $_SESSION['username']; ?>
                                     <small></small>
                                 </p>
                             </li>

@@ -1,11 +1,11 @@
 <?php
-$total = $db->select('cat_tipo_contenido');
+$total = $db->select('content_type');
 $secciones = '';
 
 foreach ($db->getResults() as $res) {
     $tipo = $res['tipo'] == 0 ? "Resumible" : "Favoritable";
     $secciones .= '<tr data-key="' . $res['id'] . '">
-                      <td>' . $res['tipo_contenido'] . '</td>
+                      <td>' . $res['content_type'] . '</td>
                       <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

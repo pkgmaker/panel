@@ -19,13 +19,10 @@ if (strlen($limit) > 0) {
 
 $ORDER = " ORDER BY RAND()";
 
-$query = "SELECT *
-	      FROM contenido
-	      WHERE
-            poster is not null and poster <> '' AND
-            fondo is not null and fondo <> ''
-            " . $ORDER . "
-            LIMIT " . $LIMIT;
+$query = "SELECT * FROM content
+	      WHERE poster is not null and poster <> '' AND
+            background is not null and background <> ''
+            " . $ORDER . " LIMIT " . $LIMIT;
 
 $total = $db->query($query);
 
@@ -34,16 +31,15 @@ $movies = [];
 foreach ($db->getResults() as $res) {
     $movie = array(
         "cve" => $res['id'],
-        "titulo" => ApiUtils::ShortText($res['titulo'], 32),
+        "titulo" => ApiUtils::ShortText($res['title'], 32),
         "audio" => '',
         "anio" => '',
         "duracion" => '',
         "calidad" => '',
         "clasificacion" => '',
         "poster" => $res['poster'],
-        "fondo" => $res['fondo']
+        "fondo" => $res['background']
     );
-
 
     $movies[] = $movie;
 }

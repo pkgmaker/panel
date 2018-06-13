@@ -1,11 +1,11 @@
 <?php
-$db->select('contenido');
+$db->select('content');
 $result = $db->getResults();
 ?>
 
 <div class="row">
     <div class="col-md-12">
-        <form class="new_user_form" id="insert-movie" action="guarda.php" method="post">
+        <form class="new_user_form" id="insert-movie" action="/manager/save.php" method="post">
             <div class="panel panel-default">
                 <div class="panel-body form-horizontal payment-form">
                     <?php
@@ -56,10 +56,10 @@ $result = $db->getResults();
                             <div class="col-md-8">
                                 <select class="form-control" id="type" name="type" class="chosen-select" required>
                                     <?php
-                                    $db->query("SELECT id, tipo_contenido FROM  cat_tipo_contenido");
+                                    $db->query("SELECT id, content_type FROM  content_type");
                                     $q_cats = $db->getResults();
                                     foreach ($q_cats as $cat) {
-                                        echo "<option value='" . $cat['id'] . "'>" . $cat['tipo_contenido'] . "</option>";
+                                        echo "<option value='" . $cat['id'] . "'>" . $cat['content_type'] . "</option>";
                                     }
                                     ?>
                                 </select>
@@ -106,7 +106,7 @@ $result = $db->getResults();
             foreach ($result as $key => $item) {
                 echo '<tr>
                                         <td>' . ($key + 1) . '</td>
-                                        <td>' . $item['titulo'] . '</td>
+                                        <td>' . $item['title'] . '</td>
                                         <td>' . $item['url'] . '</td>
                                         <td><a href="delete.php?id=' . $item['id'] . '">Eliminar</a></td>
                                     </tr>';

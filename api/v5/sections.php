@@ -9,14 +9,14 @@ $db = new PDOConnection();
 $limit = $request->get('l')->getString();
 $offset = $request->get('s')->getString();
 
-$db->query("SELECT * FROM cat_tipo_contenido");
+$db->query("SELECT * FROM content_type");
 $db->execute();
 $sections = [];
 
 foreach ($db->getResults() as $res) {
     $sections[] = array(
         "cve" => $res["id"],
-        "tipo_contenido" => ApiUtils::EncodeText($res["tipo_contenido"]),
+        "tipo_contenido" => ApiUtils::EncodeText($res["content_type"]),
         "api" => "video",
         "pin" => $res["pin"],
         "poster" => '',

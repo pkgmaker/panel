@@ -1,5 +1,5 @@
 <?php
-$db->select('cat_tipo_contenido');
+$db->select('content_type');
 $sections = $db->getResults();
 
 $tabs = '';
@@ -10,15 +10,15 @@ foreach ($sections as $key => $section) {
     $items = '';
     $id = $key . '-' . $section['id'];
     $active = $key == 0 ? 'active' : '';
-    $tabs .= '<li role="presentation" class="' . $active . '"><a href="#' . $id . '" aria-controls="home" role="tab" data-toggle="tab">' . $section['tipo_contenido'] . '</a></li>';
-    $secciones .= '<option value="' . $section['id'] . '">' . $section['tipo_contenido'] . '</option>';
+    $tabs .= '<li role="presentation" class="' . $active . '"><a href="#' . $id . '" aria-controls="home" role="tab" data-toggle="tab">' . $section['content_type'] . '</a></li>';
+    $secciones .= '<option value="' . $section['id'] . '">' . $section['content_type'] . '</option>';
 
-    $db->select('cat_categorias', "id_cat_tipo_contenido=" . $section['id']);
+    $db->select('categories', "id_content_type=" . $section['id']);
     $categories = $db->getResults();
 
     foreach ($categories as $category) {
         $items .= '<tr>
-                      <td>' . $category['categoria'] . '</td>
+                      <td>' . $category['category'] . '</td>
                       <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

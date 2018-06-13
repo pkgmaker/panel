@@ -8,12 +8,12 @@ $db = new PDOConnection();
 $type = $request->get('t')->getString();
 $categories = array();
 
-$total = $db->select("cat_categorias", "id_cat_tipo_contenido='$type'");
+$total = $db->select("categories", "id_content_type='$type'");
 
 foreach ($db->getResults() as $res) {
     $id = $res['id'];
 
-    $totalItems = $db->count('contenido', "id_cat_tipo_contenido = $type AND FIND_IN_SET($id, id_cat_categoria)");
+    $totalItems = $db->count('content', "id_content_type = $type AND FIND_IN_SET($id, id_category)");
 
     $categories[] = array(
         "cve" => $res['id'],

@@ -14,11 +14,11 @@ $renew = $request->post('confirm_pass')->getString();
 try {
 
     $password_old = hash('sha256', config::$passSalt . $old);
-    $exist = $db->select('usuario', "usuario='admin' and contrasenia='$password_old'");
+    $exist = $db->select('users_system', "username='admin' and password='$password_old'");
 
     if ($exist > 0 and strcmp($new, $renew) === 0) {
         $password = hash('sha256', config::$passSalt . $new);
-        $db->update('usuario', ['contrasenia' => $password], "usuario='admin'");
+        $db->update('users_system', ['password' => $password], "username='admin'");
         header("Location: index.php?a=success&m=Contraseña actualizada.");
     } else
         header("Location: index.php?a=danger&m=Error al actualizar.");

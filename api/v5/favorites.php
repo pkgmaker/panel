@@ -10,7 +10,7 @@ header('Content-Type: application/json; charset=utf-8');
 if ($operation == 'add')
     echo json_encode(array(
         'error' => 'no',
-        'mensaje' => 'Ya este elemento estaba entre sus favoritos.'
+        'mensaje' => 'Already in favorites.'
     ));
 elseif ($operation == 'check')
     echo json_encode(array(
@@ -20,7 +20,7 @@ elseif ($operation == 'check')
 elseif ($operation == 'remove')
     echo json_encode(array(
         'error' => 'no',
-        'mensaje' => 'Eliminado de favoritos.'
+        'mensaje' => 'Removed from favorite.'
     ));
 elseif ($operation == 'get'){
     $results = [];
@@ -29,5 +29,5 @@ elseif ($operation == 'get'){
 else
     echo json_encode(array(
         'error' => 'si',
-        'mensaje' => 'Operacion desconocida.'
+        'mensaje' => 'Unknown operation.'
     ));

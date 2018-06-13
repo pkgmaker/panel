@@ -3,20 +3,16 @@ require_once '../../security/Request.php';
 require_once '../../config/PDOConnection.php';
 require_once 'ApiUtils.php';
 
-header("Access-Control-Allow-Origin: *");
-header('Content-type: application/json;charset=utf-8');
-header('Access-Control-Allow-Methods: OPTIONS, GET');
-header('Access-Control-Allow-Headers: origin, x-content, x-app');
-
 $request = new Request();
 $db = new PDOConnection();
 
 $operation = $request->get('o')->getString();
+header('Content-type: application/json;charset=utf-8');
 
 if ($operation == 'track') {
     echo json_encode(array(
         'error' => 'no',
-        'mensaje' => 'Visita reportada.'
+        'mensaje' => 'View update.'
     ));
 } else if ($operation == 'checkFR') {
     echo json_encode(array(
@@ -33,11 +29,11 @@ if ($operation == 'track') {
 
     echo json_encode(array(
         'error' => 'no',
-        'mensaje' => 'Contenido reportado.'
+        'mensaje' => 'Content reported.'
     ));
 } else {
     echo json_encode(array(
         'error' => 'si',
-        'mensaje' => 'Operacion desconocida.'
+        'mensaje' => 'Unknown operation.'
     ));
 }

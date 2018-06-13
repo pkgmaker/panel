@@ -14,7 +14,7 @@ $section = $request->get('section')->getInt();
 $AND = "";
 $LIMIT = 100;
 if (strlen($category) > 0) {
-    $AND = " AND FIND_IN_SET($category, id_cat_categoria) ";
+    $AND = " AND FIND_IN_SET($category, id_category) ";
 }
 
 if (strlen($limit) > 0) {
@@ -27,9 +27,8 @@ if (strlen($limit) > 0) {
 
 $ORDER = "";
 
-$query = "SELECT * FROM contenido WHERE id_cat_tipo_contenido=$section
-            " . $AND . "	
-            LIMIT " . $LIMIT;
+$query = "SELECT * FROM content WHERE id_content_type=$section
+            " . $AND . " LIMIT " . $LIMIT;
 
 $total = $db->query($query);
 
@@ -43,17 +42,17 @@ foreach ($db->getResults() as $res) {
         $poster = $res['poster'];
     }
 
-    if (empty($res['fondo'])) {
+    if (empty($res['background'])) {
         $fondo = "no-poster.png";
     } else {
-        $fondo = $res['fondo'];
+        $fondo = $res['background'];
     }
 
 
     $channel = array(
         "cve" => $res['id'],
         "section" => $section,
-        "titulo" => ApiUtils::EncodeText($res['titulo']),
+        "titulo" => ApiUtils::EncodeText($res['title']),
         "anio" => '',
         "sinopsis" => '',
         "ahora" => '',

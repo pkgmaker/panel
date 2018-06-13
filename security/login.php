@@ -27,22 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $request->existPost($form_names['us
         $pass = hash('sha256', config::$passSalt . $request->post($form_names['password'])->getString());
 
         if (Util::CheckUserValidation($user)) {
-            $resp = $db->select('usuario', "usuario='$user' LIMIT 1");
+            $resp = $db->select('users_system', "username='$user' LIMIT 1");
 
             if ($resp == 1) {
                 $row = $db->fetchObjects()[0];
 
-                if ($pass == $row->contrasenia) {
+                if ($pass == $row->password) {
                     if ($row->status != 1) {
                         Util::Redirect("suspended.php?username=" . $user);
                     }
 
                     @session_start();
                     $_SESSION['id'] = $row->id;
-                    $_SESSION['usuario'] = $row->usuario;
-                    $_SESSION['logueado'] = true;
+                    $_SESSION['username'] = $row->username;
+                    $_SESSION['logging'] = true;
 
-                    $db->update('usuario', array('fecha_uconexion' => $fecha, 'ip_uconexion' => $ip), "id=$row->id  LIMIT 1");
+                    $db->update('users_system', array('last_connection_date' => $fecha, 'last_ip_connection' => $ip), "id=$row->id  LIMIT 1");
 
                     Util::CheckSession();
                 } else {
@@ -55,12 +55,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $request->existPost($form_names['us
             }
         } else {
             $message = "Usuario no valido";
-            $_SESSION['logueado'] = false;
+            $_SESSION['logging'] = false;
             Util::Redirect("/security/login.php?message=" . $message);
         }
     } else {
         $message = "Error validando su peticion.";
-        $_SESSION['logueado'] = false;
+        $_SESSION['logging'] = false;
         $form_names = $csrf->FormNames(array('username', 'password'), true);
         Util::Redirect("/security/login.php?message=" . $message);
     }
@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $request->existPost($form_names['us
         <meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
         <meta http-equiv="Pragma" content="no-cache">
         <title>TV Panel</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="/assets/css/style.css">

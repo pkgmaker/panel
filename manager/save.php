@@ -16,15 +16,15 @@ $section = $request->post('type')->getString();
 
 try {
     $values = array(
-        'titulo' => $titulo,
+        'title' => $titulo,
         'poster' => $poster,
-        'fondo' => $fondo,
+        'background' => $fondo,
         'url' => $link,
-        'id_cat_tipo_contenido' => $section,
-        'id_cat_categoria' => implode(',', $categories)
+        'id_content_type' => $section,
+        'id_category' => implode(',', $categories)
     );
 
-    $db->insert('contenido', $values);
+    $db->insert('content', $values);
     header("Location: index.php?a=success&m=Guardado Correctamente.");
 } catch (Exception $exception) {
     header("Location: index.php?a=danger&m=Error al insertar");
